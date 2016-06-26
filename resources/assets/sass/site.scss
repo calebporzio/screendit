@@ -1,0 +1,51 @@
+// Settings
+//-------------------------------------------------------------------------- */
+@import 'node_modules/beardcss/stylesheets/settings';
+@import 'node_modules/beardcss/stylesheets/settings.colors';
+
+// Tools & Mixins
+//-------------------------------------------------------------------------- */
+@import 'node_modules/beardcss/stylesheets/tools.appearance';
+@import 'node_modules/beardcss/stylesheets/tools.breakpoints';
+@import 'node_modules/beardcss/stylesheets/tools.user-drag';
+@import 'node_modules/beardcss/stylesheets/tools.font-size';
+@import 'node_modules/beardcss/stylesheets/tools.spacing';
+
+// Generic
+//-------------------------------------------------------------------------- */
+@import 'node_modules/beardcss/stylesheets/generic.reset';
+
+// Base
+//-------------------------------------------------------------------------- */
+@import 'node_modules/beardcss/stylesheets/base';
+
+// Custom breakpoints and spacing helpers
+//-------------------------------------------------------------------------- */
+// @include new-breakpoint(tablet, '(min-width: 600px)');
+// @include new-spacing-helper('58');
+
+// Put your site styles here
+//-------------------------------------------------------------------------- */
+.container {
+	width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+// Helpers
+//-------------------------------------------------------------------------- */
+@import 'node_modules/beardcss/stylesheets/helpers.text-align';
+@import 'node_modules/beardcss/stylesheets/helpers.spacing';
+@import 'node_modules/beardcss/stylesheets/helpers.line-heights';
+@import 'node_modules/beardcss/stylesheets/helpers.letter-spacing';
+@import 'node_modules/beardcss/stylesheets/helpers.fonts';
+@import 'node_modules/beardcss/stylesheets/helpers.misc';
+@import 'node_modules/beardcss/stylesheets/helpers.grid';
+@import 'node_modules/beardcss/stylesheets/helpers.floats';
+@import 'node_modules/beardcss/stylesheets/helpers.display';
+@import 'node_modules/beardcss/stylesheets/helpers.flex';
+@import 'node_modules/beardcss/stylesheets/helpers.overflow';
+@import 'node_modules/beardcss/stylesheets/helpers.colors';
+@import 'node_modules/beardcss/stylesheets/helpers.position';
+@import 'node_modules/beardcss/stylesheets/helpers.borders';
+@import 'node_modules/beardcss/stylesheets/helpers.border-radius';
