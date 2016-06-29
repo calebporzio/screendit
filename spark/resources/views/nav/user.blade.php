@@ -7,8 +7,8 @@
     :has-unread-announcements="hasUnreadAnnouncements"
     inline-template>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container" v-if="user">
+    <nav class="bg5">
+        <div class="container df jcsb pv2" v-if="user">
             <div class="navbar-header">
                 <!-- Collapsed Hamburger -->
                 <div class="hamburger">

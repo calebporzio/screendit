@@ -1,3 +1,1 @@
-<a class="navbar-brand" href="/home">
-	Screend.it
-</a>
+<a href="/"><h2 class="ft12 tcw serif">Screend.it</h2></a>

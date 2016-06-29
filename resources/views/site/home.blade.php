@@ -5,13 +5,13 @@
     <div class="container df jcsb pv2">
 
         <div class="logo">
-            <h2 class="ft12 tcw serif">Screend.it</h2>
+            <a href="/"><h2 class="ft12 tcw serif">Screend.it</h2></a>
         </div>
         
         <nav class="ft6 df jcsa">
             <li class="df aic" style="list-style: none"><a class="tcw ph2" href="">Pricing</a></li>
             <li class="df aic" style="list-style: none"><a class="tcw ph2" href="">Documentation</a></li>
-            <li class="df aic" style="list-style: none"><a class="tcw ph2" href="">Login</a></li>
+            <li class="df aic" style="list-style: none"><a class="tcw ph2" href="/login">Login</a></li>
         </nav>
     </div>
 </header>
@@ -118,7 +118,7 @@
                 <div class="df jcfe">
                     <li class="df aic" style="list-style: none"><a class="tcw ft5 ph2" href="">Pricing</a></li>
                     <li class="df aic" style="list-style: none"><a class="tcw ft5 ph2" href="">Documentation</a></li>
-                    <li class="df aic" style="list-style: none"><a class="tcw ft5 ph2" href="">Login</a></li>
+                    <li class="df aic" style="list-style: none"><a class="tcw ft5 ph2" href="/">Login</a></li>
                 </div>
             </div>
         </div>

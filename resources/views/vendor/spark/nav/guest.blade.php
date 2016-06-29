@@ -1,31 +1,19 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- Collapsed Hamburger -->
-            <div class="hamburger">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#spark-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-
+<nav class="bg5">
+    <div class="container df jcsb pv2">
+        <div>
             <!-- Branding Image -->
             @include('spark::nav.brand')
         </div>
 
-        <div class="collapse navbar-collapse" id="spark-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
+        <!-- Left Side Of Navbar -->
+        <ul class="nav navbar-nav">
+            &nbsp;
+        </ul>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login" class="navbar-link">Login</a></li>
-                <li><a href="/register" class="navbar-link">Register</a></li>
-            </ul>
-        </div>
+        <!-- Right Side Of Navbar -->
+        <ul class="ft6 df jcsa">
+            <li class="df aic" style="list-style: none"><a class="tcw ph2" href="/login">Login</a></li>
+            <li class="df aic" style="list-style: none"><a class="tcw ph2" href="/register">Register</a></li>
+        </ul>
     </div>
 </nav>

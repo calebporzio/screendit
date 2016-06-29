@@ -1,10 +1,10 @@
 @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> Something went wrong!
+    <div class="tcw ft5 ph1 pv1 mb2 bgdanger br5">
+        <strong class="">Whoops!</strong> Something went wrong!
         <br><br>
-        <ul>
+        <ul style="list-style: circle inside">
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li class="ft3">{{ $error }}</li>
             @endforeach
         </ul>
     </div>
