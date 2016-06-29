@@ -14,7 +14,7 @@
 
     <!-- CSS -->
     <link href="/css/sweetalert.css" rel="stylesheet">
-    <link href="/css/site.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
     @yield('scripts', '')
@@ -27,7 +27,7 @@
     </script>
 </head>
 <body class="with-navbar" v-cloak>
-    <div id="spark-app" class="bgg05">
+    <div id="spark-app">
         <!-- Navigation -->
         @if (Auth::check())
             @include('spark::nav.user')
