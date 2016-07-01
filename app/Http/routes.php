@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', 'SiteController@show');
+Route::get('/', 'SiteController@showHome');
+Route::get('/docs', 'SiteController@showDocs');
+Route::get('/pricing', 'SiteController@showPricing');
 
 Route::get('/home', 'HomeController@show');

@@ -11,8 +11,28 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function show()
+    public function showHome()
     {
         return view('site.home');
+    }
+
+    /**
+     * Show the application documentation.
+     *
+     * @return Response
+     */
+    public function showDocs()
+    {
+        return view('site.docs');
+    }
+
+    /**
+     * Show the application pricing.
+     *
+     * @return Response
+     */
+    public function showPricing()
+    {
+        return view('site.pricing');
     }
 }

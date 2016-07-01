@@ -62,4 +62,15 @@ class ScreenshotTest extends TestCase
         $this->assertEquals(400, $img->width());
         $this->assertEquals(400, $img->height());
     }
+
+    public function test_max_screenshots()
+    {
+        $options = [
+            'url' => 'http://facebook.com'
+        ];
+
+        $this->post('/api/screenshot', $options)
+             ->seeStatusCode(200)
+             ->seeInDatabase('screenshots', ['url' => $options['url']]);
+    }
 }

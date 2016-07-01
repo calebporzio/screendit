@@ -1,21 +1,6 @@
 @extends('site.layout')
 @section('content')
 
-<header class="bg5">
-    <div class="container df jcsb pv2">
-
-        <div class="logo">
-            <a href="/"><h2 class="ft12 tcw serif">Screend.it</h2></a>
-        </div>
-        
-        <nav class="ft6 df jcsa">
-            <li class="df aic" style="list-style: none"><a class="tcw ph2" href="">Pricing</a></li>
-            <li class="df aic" style="list-style: none"><a class="tcw ph2" href="">Documentation</a></li>
-            <li class="df aic" style="list-style: none"><a class="tcw ph2" href="/login">Login</a></li>
-        </nav>
-    </div>
-</header>
-
 <div class="hero bgg05">
     <div class="container tac pv8">
         <div class="pv8">
@@ -103,27 +88,5 @@
         </h3>
     </div>
 </div>
-
-<footer class="pv6 bg5">
-    <div class="container">
-
-        <div class="frame">
-            <div class="blk">
-                <p class="tcw ft5">
-                    &copy; 2016 | Design by Caleb Porzio.
-                </p>
-            </div>
-
-            <div class="blk">
-                <div class="df jcfe">
-                    <li class="df aic" style="list-style: none"><a class="tcw ft5 ph2" href="">Pricing</a></li>
-                    <li class="df aic" style="list-style: none"><a class="tcw ft5 ph2" href="">Documentation</a></li>
-                    <li class="df aic" style="list-style: none"><a class="tcw ft5 ph2" href="/">Login</a></li>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</footer>
 
 @endsection
