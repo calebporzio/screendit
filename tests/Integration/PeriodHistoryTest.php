@@ -9,3 +9,5 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ScreenshotTest extends TestCase
 {
 	use DatabaseMigrations;
+
+}
