@@ -12,6 +12,10 @@ class ScreenshotController extends Controller
 {
     public function generate(Request $request)
     {
+        if (Auth::user()->isOutOfRequests()) {
+            return response()->json(['error' => 'You are at your maximum requests for this period.'], 400);
+        }
+
     	try {
 
     		$screenshot = Screenshot::take($request->all());

@@ -48,8 +48,25 @@ class User extends SparkUser
         'uses_two_factor_auth' => 'boolean',
     ];
 
+    public function histories()
+    {
+        return $this->hasMany('App\PeriodHistory');
+    }
+
     public function screenshots()
     {
         return $this->hasMany('App\Screenshot');
+    }
+
+    public function incrementRequests()
+    {
+        $this->requests_this_period++;
+        $this->save();
+    }
+
+    public function setPeriodStart()
+    {
+        $this->period_start_date = \Carbon\Carbon::now();
+        $this->save();
     }
 }

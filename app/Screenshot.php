@@ -52,6 +52,8 @@ class Screenshot extends Model
 
     		$model->uploadToS3();
 
+            $model->recordRequest();
+
     		$model->save();
     		
     		return $model;
@@ -94,6 +96,11 @@ class Screenshot extends Model
     		'expires_at' => $this->expires_at,
     		'cached' => $this->cached,
     	];
+    }
+
+    public function recordRequest()
+    {
+        $this->user->incrementRequests();
     }
 
     public static function deleteExpired()
