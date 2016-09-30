@@ -13,7 +13,8 @@
         "laravel/cashier": "~6.0",
         "laravel/spark": "*@dev",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
