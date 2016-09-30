@@ -53,12 +53,12 @@ class SparkServiceProvider extends ServiceProvider
         Spark::useStripe()->trialDays(10);
 
         Spark::plan('Standard', 'standard-monthly')
-            ->price(9.99)
+            ->price(29.99)
             ->features([
-                '1000 screenshots /mo',
+                '10,000 screenshots /mo',
             ])
             ->attributes([
-                'monthly_limit' => 100
+                'monthly_limit' => 10000
             ]);
     }
 }
