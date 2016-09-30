@@ -13,11 +13,11 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $details = [
-        'vendor' => 'Your Company',
-        'product' => 'Your Product',
-        'street' => 'PO Box 111',
-        'location' => 'Your Town, NY 12345',
-        'phone' => '555-555-5555',
+        'vendor' => 'Screend.it',
+        'product' => '',
+        'street' => '',
+        'location' => '',
+        'phone' => '',
     ];
 
     /**
@@ -25,7 +25,7 @@ class SparkServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $sendSupportEmailsTo = null;
+    protected $sendSupportEmailsTo = 'calebporzio@gmail.com';
 
     /**
      * All of the application developer e-mail addresses.
@@ -50,17 +50,15 @@ class SparkServiceProvider extends ServiceProvider
      */
     public function booted()
     {
-        Spark::useStripe()->noCardUpFront()->trialDays(10);
+        Spark::useStripe()->trialDays(10);
 
-        Spark::freePlan()
+        Spark::plan('Standard', 'standard-monthly')
+            ->price(9.99)
             ->features([
-                'First', 'Second', 'Third'
-            ]);
-
-        Spark::plan('Basic', 'provider-id-1')
-            ->price(10)
-            ->features([
-                'First', 'Second', 'Third'
+                '1000 screenshots /mo',
+            ])
+            ->attributes([
+                'monthly_limit' => 100
             ]);
     }
 }

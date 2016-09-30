@@ -12,3 +12,4 @@
 require('./../spark-components/bootstrap');
 
 require('./home');
+require('./s3-account');

@@ -6,6 +6,7 @@ use App\Screenshot;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Exceptions\ApiException;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class ScreenshotController extends Controller
@@ -20,12 +21,11 @@ class ScreenshotController extends Controller
 
     		$screenshot = Screenshot::take($request->all());
 
-    	} catch (ApiException $e) {
+    	} catch (\Aws\S3\Exception\S3Exception $e) {
 
-    		return response()->json(['error' => $e->getMessage()], $e->getStatusCode());
+    		return response()->json(['error' => 'Error connecting to S3, check your credentials.'], 400);
 
     	} catch (\Exception $e) {
-    		throw $e;
     		return response()->json(['error' => 'An Internal Error has Occurred.'], 500);
 
     	}  

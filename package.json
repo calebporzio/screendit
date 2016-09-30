@@ -4,7 +4,8 @@
     "gulp": "^3.8.8"
   },
   "dependencies": {
-    "babel-preset-react": "^6.5.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
     "beardcss": "^2.0.15",
     "bootstrap": "^3.0.0",
     "jquery": "^2.1.4",

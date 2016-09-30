@@ -15,13 +15,11 @@ class CreateScreenshotsTable extends Migration
         Schema::create('screenshots', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url')->nullable();
+            $table->string('bucket')->nullable();
+            $table->string('file')->nullable();
             $table->string('viewport')->nullable();
             $table->string('crop')->nullable();
             $table->boolean('hide_lightboxes')->nullable();
-            $table->boolean('cached')->nullable();
-            $table->string('format')->nullable();
-            $table->string('filename')->nullable();
-            $table->timestamp('expires_at')->nullable();
             $table->integer('user_id')->nullable();
             $table->softDeletes();
             $table->timestamps();

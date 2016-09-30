@@ -60,6 +60,11 @@ class ScreenshotOptions
 		return $this;
 	}
 
+	public function getFilename()
+	{
+		return 'test.png';
+	}
+
 	public function optionsArray()
 	{
 		return $this->optionsArray;

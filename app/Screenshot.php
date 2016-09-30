@@ -11,21 +11,16 @@ class Screenshot extends Model
 
     protected $fillable = [
     	'url',
+        'bucket',
+        'file',
 	    'viewport',
 	    'crop',
 	    'hide_lightboxes',
-	    'cached',
-	    'format',
     ];
 
     public function user()
     {
     	return $this->belongsTo('App\User');
-    }
-
-    public function scopeExpired($query)
-    {
-    	return $query->where('expires_at', '<', \Carbon\Carbon::now());
     }
 
     public static function take($rawOptions)
@@ -40,7 +35,7 @@ class Screenshot extends Model
 
     		\Auth::user()->screenshots()->save($model);
 
-    		$filename = $model->generateFilename();
+    		$filename = $model->filename;
 
     		$outputPath = storage_path('app/screenshots/' . $filename);
             
@@ -60,11 +55,6 @@ class Screenshot extends Model
     	});
     }
 
-    public function generateFilename()
-    {
-    	return time() . '.' . $this->format;
-    }
-
     public function saveOutputFilename($filename)
     {
     	$this->filename = $filename;
@@ -79,7 +69,18 @@ class Screenshot extends Model
 
     public function uploadToS3()
     {
-    	\Storage::disk('s3')->put('screenshots/' . $this->filename, file_get_contents(storage_path('app/screenshots/' . $this->filename)));
+        $key = $this->user->s3_key;
+        $secret = $this->user->s3_secret;
+        $directory = $this->user->s3_directory;
+
+        if (!$key && !$secret) {
+            throw new \Exception('You need to add your S3 credentials');
+        }
+
+        \Config::set('filesystems.disks.s3.key', $key);
+        \Config::set('filesystems.disks.s3.secret', $secret);
+
+    	\Storage::disk('s3')->put($directory . $this->filename, file_get_contents(storage_path('app/screenshots/' . $this->filename)));
 
     	$this->removeLocalCopy();
     }
@@ -92,7 +93,7 @@ class Screenshot extends Model
     public function apiOutput()
     {
     	return [
-    		'url' => 'https://s3.amazonaws.com/screendit/screenshots/' . $this->filename,
+    		'url' => $this->user->s3_directory . $this->filename,
     		'expires_at' => $this->expires_at,
     		'cached' => $this->cached,
     	];

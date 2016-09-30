@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Events\Laravel\Spark\Events\Subscription\UserSubscribed;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Laravel\Spark\Events\Subscription\UserSubscribed;
 
 class SetPeriodStart
 {

@@ -69,4 +69,20 @@ class User extends SparkUser
         $this->period_start_date = \Carbon\Carbon::now();
         $this->save();
     }
+
+    public function isOutOfRequests()
+    {
+        return $this->requests_this_period >= $this->sparkPlan()->attribute('monthly_limit');
+    }
+
+    public function saveS3Credentials($request)
+    {
+        $directory = $request->directory;
+        $directory .= (substr($directory, -1) == '/' ? '' : '/');
+        $this->s3_directory = $directory;
+        $this->s3_bucket = $request->bucket;
+        $this->s3_key = $request->key;
+        $this->s3_secret = $request->secret;
+        $this->save();
+    }
 }

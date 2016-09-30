@@ -22,6 +22,13 @@
                     <div class="panel-body">
                         <div class="spark-settings-tabs">
                             <ul class="nav spark-settings-stacked-tabs" role="tablist">
+                                <!-- Bucket Link -->
+                                <li role="presentation">
+                                    <a href="#bucket" aria-controls="bucket" role="tab" data-toggle="tab">
+                                        <i class="fa fa-fw fa-btn fa-bucket"></i>S3 Account
+                                    </a>
+                                </li>
+
                                 <!-- Profile Link -->
                                 <li role="presentation">
                                     <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
@@ -100,6 +107,11 @@
             <!-- Tab Panels -->
             <div class="col-md-8">
                 <div class="tab-content">
+                    <!-- Bucket -->
+                    <div role="tabpanel" class="tab-pane active" id="bucket">
+                        @include('spark::settings.bucket')
+                    </div>
+
                     <!-- Profile -->
                     <div role="tabpanel" class="tab-pane active" id="profile">
                         @include('spark::settings.profile')
