@@ -14,7 +14,7 @@ class AddRequestsThisPeriodToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('requests_this_period')->default(0);
-            $table->dateTime('period_start_date');
+            $table->dateTime('period_start_date')->nullable();
         });
     }
 
