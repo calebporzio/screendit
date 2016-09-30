@@ -13,6 +13,11 @@ class ScreenshotController extends Controller
 {
     public function generate(Request $request)
     {
+        $this->validate($request, [
+            'url' => 'required|url', 
+            'file' => ['required', 'regex:/(.jpg)|(.png)$/'],
+        ]);
+
         if (Auth::user()->isOutOfRequests()) {
             return response()->json(['error' => 'You are at your maximum requests for this period.'], 400);
         }

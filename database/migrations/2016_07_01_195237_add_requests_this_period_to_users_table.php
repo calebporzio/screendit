@@ -26,8 +26,11 @@ class AddRequestsThisPeriodToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('requests_this_period');
             $table->dropColumn('period_start_date');
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('requests_this_period');
         });
     }
 }
