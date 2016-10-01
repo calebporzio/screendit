@@ -6,13 +6,21 @@ Vue.component('s3-account', {
      */
     data() {
         return {
+        	showForm: false,
             form: new SparkForm({
-                bucket: '',
-                directory: '',
-                key: '',
-                secret: ''
+                s3_bucket: '',
+                s3_key: '',
+                s3_secret: ''
             })
         };
+    },
+
+    computed: {
+    	hasntAddedCredsYet() {
+    		return ! (this.user.s3_bucket &&
+    			this.user.s3_key &&
+    			this.user.s3_secret);
+    	}
     },
 
 
@@ -20,22 +28,44 @@ Vue.component('s3-account', {
      * Bootstrap the component.
      */
     ready() {
-        this.form.bucket = this.user.s3_bucket;
-        this.form.directory = this.user.s3_directory;
-        this.form.key = this.user.s3_key;
-        this.form.secret = this.user.s3_secret;
+        this.form.s3_bucket = this.user.s3_bucket;
+        this.form.s3_key = this.user.s3_key;
+        this.form.s3_secret = this.user.s3_secret;
     },
 
 
     methods: {
+    	toggleForm() {
+    		this.showForm = ! this.showForm;
+    	},
+
+    	edit() {
+    		this.form.s3_secret = '';
+    		this.toggleForm();
+    	},
+
         /**
-         * Update the user's s3 bucket information.
+         * Add the user's s3 bucket information.
          */
-        update() {
-            Spark.put('/api/s3-account', this.form)
+        save() {
+            Spark.post('/api/s3-account', this.form)
                 .then(() => {
                     swal('Success', 's3 Bucket Successfully Added!', 'success');
+                    // vvv Cowards way out, I know...
+                    window.location.reload();
                 });
+        },
+
+        /**
+         * Update the user's S3 creds.
+         */
+        update() {
+        	Spark.post('/api/s3-account', this.form)
+        	    .then(() => {
+        	        swal('Success', 's3 Bucket Successfully Updated!', 'success');
+        	        // vvv Cowards way out, I know...
+        	        window.location.reload();
+        	    });
         }
     }
 });

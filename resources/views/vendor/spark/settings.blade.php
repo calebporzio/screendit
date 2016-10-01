@@ -25,7 +25,7 @@
                                 <!-- Bucket Link -->
                                 <li role="presentation">
                                     <a href="#bucket" aria-controls="bucket" role="tab" data-toggle="tab">
-                                        <i class="fa fa-fw fa-btn fa-bucket"></i>S3 Account
+                                        <i class="fa fa-fw fa-btn fa-amazon"></i>S3 Account
                                     </a>
                                 </li>
 

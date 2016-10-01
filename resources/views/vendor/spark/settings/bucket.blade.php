@@ -4,76 +4,75 @@
             <div class="panel-heading">S3 Account</div>
 
             <div class="panel-body">
-                <!-- Success Message -->
-                <div class="alert alert-success" v-if="form.successful">
-                    Your credentials have been saved!
+                <!-- Error Message -->
+                <div class="alert alert-danger" v-if="form.errors.hasErrors()">
+                    <p v-text="error" v-for="error in form.errors.flatten()"></p>
                 </div>
+				
+				<div v-if="showForm || hasntAddedCredsYet">
+					<a href="#" class="text-danger pull-right" @click.prevent="toggleForm"><i class="fa fa-fw fa-close"></i></a>
 
-                <form class="form-horizontal" role="form">
-                	<!-- Bucket -->
-                	<div class="form-group" :class="{'has-error': form.errors.has('bucket')}">
-                	    <label class="col-md-4 control-label">S3 Bucket Name</label>
+					<!-- Create / Update Form -->
+	                <form class="form-horizontal" role="form">
+	                	<!-- Bucket -->
+	                	<div class="form-group" :class="{'has-error': form.errors.has('s3_bucket')}">
+	                	    <label class="col-md-4 control-label">S3 Bucket</label>
 
-                	    <div class="col-md-6">
-                	        <input type="text" class="form-control" name="bucket" v-model="form.bucket">
+	                	    <div class="col-md-6">
+	                	        <input type="text" class="form-control" name="s3_bucket" v-model="form.s3_bucket">
+	                	    </div>
+	                	</div>
 
-                	        <span class="help-block" v-show="form.errors.has('bucket')">
-                	            @{{ form.errors.get('bucket') }}
-                	        </span>
-                	    </div>
-                	</div>
+	                    <!-- API Key -->
+	                    <div class="form-group" :class="{'has-error': form.errors.has('s3_key')}">
+	                        <label class="col-md-4 control-label">API Key</label>
 
-                	<!-- Directory -->
-                	<div class="form-group" :class="{'has-error': form.errors.has('directory')}">
-                	    <label class="col-md-4 control-label">Screenshot Directory</label>
+	                        <div class="col-md-6">
+	                            <input type="text" class="form-control" name="s3_key" v-model="form.s3_key">
+	                        </div>
+	                    </div>
 
-                	    <div class="col-md-6">
-                	        <input type="text" class="form-control" name="directory" v-model="form.directory">
+	                    <!-- API Secret -->
+	                    <div class="form-group" :class="{'has-error': form.errors.has('s3_secret')}">
+	                        <label class="col-md-4 control-label">Secret Key</label>
 
-                	        <span class="help-block" v-show="form.errors.has('directory')">
-                	            @{{ form.errors.get('directory') }}
-                	        </span>
-                	    </div>
-                	</div>
+	                        <div class="col-md-6">
+	                            <input type="text" class="form-control" name="s3_secret" v-model="form.s3_secret">
+	                        </div>
+	                    </div>
 
-                    <!-- API Key -->
-                    <div class="form-group" :class="{'has-error': form.errors.has('key')}">
-                        <label class="col-md-4 control-label">API Key</label>
+	                    <!-- Update Button -->
+	                    <div class="form-group">
+	                        <div class="col-md-offset-4 col-md-6">
+	                            <button type="submit" class="btn @{{ form.errors.hasErrors() ? 'btn-danger' : 'btn-primary' }}"
+	                                    @click.prevent="update"
+	                                    :disabled="form.busy">
+	                                <span v-if="hasntAddedCredsYet">Save</span>
+	                                <span v-else="hasntAddedCredsYet">Save</span>
 
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="key" v-model="form.key">
+	                                <span v-if="form.busy">&nbsp<i class="fa fa-circle-o-notch fa-spin"></i></span>
+	                            </button>
+	                        </div>
+	                    </div>
+	                </form>
+					
+				</div>
 
-                            <span class="help-block" v-show="form.errors.has('key')">
-                                @{{ form.errors.get('key') }}
-                            </span>
-                        </div>
-                    </div>
+				<div v-else>
+					<div class="pull-right">
+						<button class="btn btn-warning" @click="edit"><i class="fa fa-edit"></i> Edit</button>
+					</div>
 
-                    <!-- API Secret -->
-                    <div class="form-group" :class="{'has-error': form.errors.has('secret')}">
-                        <label class="col-md-4 control-label">Secret Key</label>
-
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="secret" v-model="form.secret">
-
-                            <span class="help-block" v-show="form.errors.has('secret')">
-                                @{{ form.errors.get('secret') }}
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Update Button -->
-                    <div class="form-group">
-                        <div class="col-md-offset-4 col-md-6">
-                            <button type="submit" class="btn btn-primary"
-                                    @click.prevent="update"
-                                    :disabled="form.busy">
-
-                                Update
-                            </button>
-                        </div>
-                    </div>
-                </form>
+					<dl class="dl-horizontal">
+					  <dt>Bucket</dt>
+					  <dd>@{{ user.s3_bucket }}</dd>
+					  <dt>Key</dt>
+					  <dd>@{{ user.s3_key }}</dd>
+					  <dt>Secret</dt>
+					  <dd>@{{ user.s3_secret }}</dd>
+					</dl>
+				</div>
+				
             </div>
         </div>
     </div>

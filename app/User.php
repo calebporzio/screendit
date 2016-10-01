@@ -61,7 +61,7 @@ class User extends SparkUser
     public function incrementRequests()
     {
         $this->requests_this_period++;
-        
+
         $this->save();
     }
 
@@ -84,5 +84,12 @@ class User extends SparkUser
         $this->s3_secret = $request->s3_secret;
 
         $this->save();
+    }
+
+    public function toArray()
+    {
+        return array_merge(parent::toArray(), [
+            's3_secret' => str_repeat("*", strlen($this->s3_secret)),
+        ]);
     }
 }
