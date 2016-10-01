@@ -6,10 +6,10 @@ class ScreenshotOptions
 {
 	public $defaults = [
 		'url' => '',
+		'file' => '',
 		'viewport' => '1480x1037',
 		'crop' => '0',
 		'cached' => false,
-		'format' => 'jpg',
 		'hide_lightboxes' => false,
 	];
 
@@ -23,39 +23,20 @@ class ScreenshotOptions
 	public static function prepare($inputOptions)
 	{
 		return (new self($inputOptions))
-					->fill()
-					->filter()
-					->validate();
+					->setOptionDefaults()
+					->filterOutExtraInput();
 	}
 
-	public function filter()
+	public function filterOutExtraInput()
 	{
 		$this->optionsArray = array_intersect_key($this->optionsArray, $this->defaults);
 
 		return $this;
 	}
 
-	public function fill()
+	public function setOptionDefaults()
 	{
 		$this->optionsArray = array_merge($this->defaults, $this->optionsArray);
-
-		return $this;
-	}
-
-	public function validate()
-	{
-		$validators = [
-			\App\Validators\UrlValidator::class,
-			\App\Validators\ViewportValidator::class,
-			\App\Validators\CropValidator::class,
-			\App\Validators\CacheValidator::class,
-			\App\Validators\FormatValidator::class,
-			\App\Validators\HideLightboxesValidator::class,
-		];
-
-		foreach ($validators as $validator) {
-			(new $validator($this))->validate();
-		}
 
 		return $this;
 	}

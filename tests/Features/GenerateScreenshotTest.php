@@ -35,6 +35,22 @@ class GenerateScreenshotTest extends TestCase
 		]);
 	}
 
+	public function testUserIsOutOfRequestsForTheMonth()
+	{
+		$user = Auth::user();
+		$user->requests_this_period = 15000;
+		$user->save();
+
+		$this->post('/api/screenshot', [
+			'url' => 'http://google.com',
+			'file' => 'test_screenshot.png',
+		], ['Accept' => 'application/json'])->seeJson([
+			'error' => 'You are at your maximum requests for this period.',
+		]);
+
+		// check s3 if it exists
+	}
+
 	public function testScreenshotGetsGenerated()
 	{
 		$user = $this->getUserWithS3Creds();
@@ -42,7 +58,7 @@ class GenerateScreenshotTest extends TestCase
 		$this->post('/api/screenshot', [
 			'url' => 'http://google.com',
 			'file' => 'test_screenshot.png',
-		], ['Accept' => 'application/json'])->seeStatusCode(200);
+		], ['Accept' => 'application/json'])->dump()->seeStatusCode(200);
 
 		// check s3 if it exists
 	}
