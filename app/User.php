@@ -61,12 +61,14 @@ class User extends SparkUser
     public function incrementRequests()
     {
         $this->requests_this_period++;
+        
         $this->save();
     }
 
     public function setPeriodStart()
     {
         $this->period_start_date = \Carbon\Carbon::now();
+
         $this->save();
     }
 
@@ -77,12 +79,10 @@ class User extends SparkUser
 
     public function saveS3Credentials($request)
     {
-        $directory = $request->directory;
-        $directory .= (substr($directory, -1) == '/' ? '' : '/');
-        $this->s3_directory = $directory;
-        $this->s3_bucket = $request->bucket;
-        $this->s3_key = $request->key;
-        $this->s3_secret = $request->secret;
+        $this->s3_bucket = $request->s3_bucket;
+        $this->s3_key = $request->s3_key;
+        $this->s3_secret = $request->s3_secret;
+
         $this->save();
     }
 }

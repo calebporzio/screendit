@@ -16,5 +16,5 @@ Route::group([
     'middleware' => 'auth:api'
 ], function () {
     Route::post('screenshot', 'ScreenshotController@generate');
-    Route::put('s3-account', 'S3AccountController@save');
+    Route::post('s3-account', 'S3AccountController@save');
 });
