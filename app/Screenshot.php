@@ -26,26 +26,22 @@ class Screenshot extends Model
     public static function take($rawOptions)
     {
     	return \DB::transaction(function() use ($rawOptions) {
-    		// Check, filter & validate.
-    		$options = ScreenshotOptions::prepare($rawOptions);
 
-    		// Detecting if cached might go here
+    		$screenshotOptions = ScreenshotOptions::prepare($rawOptions);
 
-    		$model = self::create($options->optionsArray());
+    		$model = self::create($screenshotOptions->toArray());
 
     		\Auth::user()->screenshots()->save($model);
 
-    		$filename = $model->filename;
+    		$tempFilename = time() . '.' . $screenshotOptions->getExtension();
 
-    		$outputPath = storage_path('app/screenshots/' . $filename);
+    		$tempFilePath = storage_path('app/screenshots/' . $tempFilename);
             
-    		CommandLine::execute(ScreenshotCommandGenerator::generate($outputPath, $options->formatForCommand()));
+    		CommandLine::execute(ScreenshotCommandGenerator::generate($tempFilePath, $screenshotOptions->formatForCommand()));
 
-    		$model->saveOutputFilename($filename);
+    		$model->uploadToS3($tempFilePath);
 
-    		$model->saveExpires();
-
-    		$model->uploadToS3();
+            $model->removeLocalCopy($tempFilename);
 
             $model->recordRequest();
 
@@ -55,39 +51,26 @@ class Screenshot extends Model
     	});
     }
 
-    public function saveOutputFilename($filename)
-    {
-    	$this->filename = $filename;
-    	$this->save();
-    }
-
-    public function saveExpires()
-    {
-    	$this->expires_at = \Carbon\Carbon::now()->addMonth();
-    	$this->save();
-    }
-
-    public function uploadToS3()
+    public function uploadToS3($tempFilePath)
     {
         $key = $this->user->s3_key;
         $secret = $this->user->s3_secret;
-        $directory = $this->user->s3_directory;
+        $bucket = $this->user->s3_bucket;
 
-        if (!$key && !$secret) {
+        if (!$key && !$secret && !$bucket) {
             throw new \Exception('You need to add your S3 credentials');
         }
 
         \Config::set('filesystems.disks.s3.key', $key);
         \Config::set('filesystems.disks.s3.secret', $secret);
+        \Config::set('filesystems.disks.s3.bucket', $bucket);
 
-    	\Storage::disk('s3')->put($directory . $this->filename, file_get_contents(storage_path('app/screenshots/' . $this->filename)));
-
-    	$this->removeLocalCopy();
+    	\Storage::disk('s3')->put($this->file, file_get_contents($tempFilePath));
     }
 
-    public function removeLocalCopy()
+    public function removeLocalCopy($tempFilename)
     {
-    	\Storage::disk('local')->delete('screenshots/' . $this->filename);
+    	\Storage::disk('local')->delete('screenshots/' . $tempFilename);
     }
 
     public function apiOutput()

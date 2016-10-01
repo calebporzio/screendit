@@ -9,7 +9,6 @@ class ScreenshotOptions
 		'file' => '',
 		'viewport' => '1480x1037',
 		'crop' => '0',
-		'cached' => false,
 		'hide_lightboxes' => false,
 	];
 
@@ -27,13 +26,6 @@ class ScreenshotOptions
 					->filterOutExtraInput();
 	}
 
-	public function filterOutExtraInput()
-	{
-		$this->optionsArray = array_intersect_key($this->optionsArray, $this->defaults);
-
-		return $this;
-	}
-
 	public function setOptionDefaults()
 	{
 		$this->optionsArray = array_merge($this->defaults, $this->optionsArray);
@@ -41,14 +33,23 @@ class ScreenshotOptions
 		return $this;
 	}
 
-	public function getFilename()
+	public function filterOutExtraInput()
 	{
-		return 'test.png';
+		$this->optionsArray = array_intersect_key($this->optionsArray, $this->defaults);
+
+		return $this;
 	}
 
-	public function optionsArray()
+	public function toArray()
 	{
 		return $this->optionsArray;
+	}
+
+	public function getExtension()
+	{
+		preg_match('/(\.)([^.]+)$/', $this->file, $match);
+
+		return $match[2];
 	}
 
 	public function formatForCommand()

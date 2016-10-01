@@ -15,6 +15,7 @@ class AddS3CredsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('s3_key')->nullable();
             $table->string('s3_secret')->nullable();
+            $table->string('s3_bucket')->nullable();
         });
     }
 
@@ -31,6 +32,10 @@ class AddS3CredsToUsersTable extends Migration
 
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('s3_secret');
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('s3_bucket');
         });
     }
 }

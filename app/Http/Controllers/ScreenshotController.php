@@ -16,6 +16,9 @@ class ScreenshotController extends Controller
         $this->validate($request, [
             'url' => 'required|url', 
             'file' => ['required', 'regex:/(.jpg)|(.png)$/'],
+            'viewport' => ['regex:/^(([0-9]{1,3}|[0-1][0-9]{1,3})x([0-9]{1,3}|[0-1][0-9]{1,3}))$/'],
+            'crop' => ['regex:/^(([0-9]{1,3}|[0-1][0-9]{1,3})x([0-9]{1,3}|[0-1][0-9]{1,3}))$/'],
+            'hide_lightboxes' => 'boolean',
         ]);
 
         if (Auth::user()->isOutOfRequests()) {

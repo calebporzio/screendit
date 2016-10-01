@@ -29,9 +29,15 @@ class GenerateScreenshotTest extends TestCase
 			// Invalid Url
 			'url' => 'testurl.com',
 			'file' => 'somepic.xml',
+			'viewport' => '3000x9999',
+			'crop' => '22',
+			'hide_lightboxes' => 'something'
 		], ['Accept' => 'application/json'])->seeJson([
 			'url' => ['The url format is invalid.'],
 			'file' => ['The file format is invalid.'],
+			'viewport' => ['The viewport format is invalid.'],
+			'crop' => ['The crop format is invalid.'],
+			'hide_lightboxes' => ['The hide lightboxes field must be true or false.'],
 		]);
 	}
 
@@ -47,8 +53,6 @@ class GenerateScreenshotTest extends TestCase
 		], ['Accept' => 'application/json'])->seeJson([
 			'error' => 'You are at your maximum requests for this period.',
 		]);
-
-		// check s3 if it exists
 	}
 
 	public function testScreenshotGetsGenerated()
@@ -57,10 +61,17 @@ class GenerateScreenshotTest extends TestCase
 
 		$this->post('/api/screenshot', [
 			'url' => 'http://google.com',
-			'file' => 'test_screenshot.png',
-		], ['Accept' => 'application/json'])->dump()->seeStatusCode(200);
+			'file' => 'here/test_screenshot.png',
+		], ['Accept' => 'application/json'])->seeStatusCode(200);
 
-		// check s3 if it exists
+		// Make sure the screenshot got generated on S3.
+		\Config::set('filesystems.disks.s3.key', $user->s3_key);
+		\Config::set('filesystems.disks.s3.secret', $user->s3_secret);
+		\Config::set('filesystems.disks.s3.bucket', $user->s3_bucket);
+		$this->assertTrue(\Storage::disk('s3')->exists('here/test_screenshot.png'));
+
+		// Clean up after test on S3.
+		\Storage::disk('s3')->delete('here/test_screenshot.png');
 	}
 
 	public function getUserWithS3Creds()
@@ -69,6 +80,7 @@ class GenerateScreenshotTest extends TestCase
 
 		$user->s3_key = env('S3_KEY');
 		$user->s3_secret = env('S3_SECRET');
+		$user->s3_bucket = env('S3_BUCKET');
 		$user->save();
 
 		return $user;
