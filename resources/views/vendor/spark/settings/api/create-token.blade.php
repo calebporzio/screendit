@@ -78,7 +78,8 @@
             <div class="modal-dialog" v-if="showingToken">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <a href="/home" class="close" aria-hidden="true" v-if="spark.state.user.is_onboarding">&times;</a>
+                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true" v-else>&times;</button>
 
                         <h4 class="modal-title">
                             API Token
@@ -97,7 +98,8 @@
 
                     <!-- Modal Actions -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <a href="/home" class="btn btn-default" v-if="spark.state.user.is_onboarding">Close</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" v-else>Close</button>
                     </div>
                 </div>
             </div>

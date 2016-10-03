@@ -33805,6 +33805,11 @@ require('./s3-account');
 Vue.component('home', {
     props: ['user'],
 
+    data: function data() {
+        return {
+            steps: [{ number: 1, text: 'Add Your S3 Credentials', cta: 'Add Them', link: '/settings#/bucket' }, { number: 2, text: 'Create an API Token', cta: 'Create One', link: '/settings#/api' }, { number: 3, text: 'Generate a Screenshot!', cta: 'See How', link: '/docs' }]
+        };
+    },
     ready: function ready() {
         //
     }
@@ -33861,22 +33866,9 @@ Vue.component('s3-account', {
          * Add the user's s3 bucket information.
          */
         save: function save() {
-            Spark.post('/api/s3-account', this.form).then(function () {
-                swal('Success', 's3 Bucket Successfully Added!', 'success');
-                // vvv Cowards way out, I know...
-                window.location.reload();
-            });
-        },
-
-
-        /**
-         * Update the user's S3 creds.
-         */
-        update: function update() {
-            Spark.post('/api/s3-account', this.form).then(function () {
-                swal('Success', 's3 Bucket Successfully Updated!', 'success');
-                // vvv Cowards way out, I know...
-                window.location.reload();
+            Spark.post('/api/s3-account', this.form).then(function (response) {
+                swal('Success', 's3 Bucket Successfully Saved!', 'success');
+                window.location = response.redirect_url;
             });
         }
     }

@@ -10,7 +10,7 @@
                 </div>
 				
 				<div v-if="showForm || hasntAddedCredsYet">
-					<a href="#" class="text-danger pull-right" @click.prevent="toggleForm"><i class="fa fa-fw fa-close"></i></a>
+					<a href="#" class="text-danger pull-right" @click.prevent="toggleForm" v-if="! hasntAddedCredsYet"><i class="fa fa-fw fa-close"></i></a>
 
 					<!-- Create / Update Form -->
 	                <form class="form-horizontal" role="form">
@@ -45,7 +45,7 @@
 	                    <div class="form-group">
 	                        <div class="col-md-offset-4 col-md-6">
 	                            <button type="submit" class="btn @{{ form.errors.hasErrors() ? 'btn-danger' : 'btn-primary' }}"
-	                                    @click.prevent="update"
+	                                    @click.prevent="save"
 	                                    :disabled="form.busy">
 	                                <span v-if="hasntAddedCredsYet">Save</span>
 	                                <span v-else="hasntAddedCredsYet">Save</span>

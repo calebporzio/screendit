@@ -5,7 +5,7 @@
     <div class="container tac pv8">
         <div class="pv8">
             <h1 class="ft12 mb4 tc1">A no funny business screenshot service.</h1>
-            <a href="#" class="ft9 tcw pv1 ph2 br4 bg1">Get Started</a>
+            <a href="/register" class="ft9 tcw pv1 ph2 br4 bg1">Get Started</a>
         </div>
     </div>
 </div>
@@ -21,7 +21,7 @@
 
         <div>
             <h3 class="ft8 tcw mb3">Request</h3>
-            <div class="bcg20 brdr1 br5 df fdc ofh">
+            <div class="bcg20 brdr1p br5 df fdc ofh">
                 <div class="bgg20 pv1 ph1 df fdr jcfs">
                     <div style="border-radius: 30px" class="ft1 bgw mr1">&nbsp&nbsp&nbsp&nbsp</div>
                     <div style="border-radius: 30px" class="ft1 bgw mr1">&nbsp&nbsp&nbsp&nbsp</div>
@@ -83,8 +83,8 @@
 <div class="section-4 pv8 bgg05">
     <div class="container">
         <h3 class="ft9 tac tc5">
-            What are you waiting for? Check out our 14 day free trial.
-            <a href="#" class="ft9 tcw pv1 ph2 br4 bg1 ml3">Get Started</a>
+            What are you waiting for? Check out our 10 day free trial.
+            <a href="/register" class="ft9 tcw pv1 ph2 br4 bg1 ml3">Get Started</a>
         </h3>
     </div>
 </div>

@@ -49,23 +49,10 @@ Vue.component('s3-account', {
          */
         save() {
             Spark.post('/api/s3-account', this.form)
-                .then(() => {
-                    swal('Success', 's3 Bucket Successfully Added!', 'success');
-                    // vvv Cowards way out, I know...
-                    window.location.reload();
+                .then(response => {
+                    swal('Success', 's3 Bucket Successfully Saved!', 'success');
+                    window.location = response.redirect_url
                 });
-        },
-
-        /**
-         * Update the user's S3 creds.
-         */
-        update() {
-        	Spark.post('/api/s3-account', this.form)
-        	    .then(() => {
-        	        swal('Success', 's3 Bucket Successfully Updated!', 'success');
-        	        // vvv Cowards way out, I know...
-        	        window.location.reload();
-        	    });
         }
     }
 });
