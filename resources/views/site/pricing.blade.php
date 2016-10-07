@@ -5,7 +5,7 @@
 
 	<div class="container pv3 ph4">
 
-		<div class="pv4 ft9 tc1 tac">Yes, our pricing is this simple.</div>
+		<div class="pv4 ft9 tc1 tac">Ya, it's that simple.</div>
 
 		<div class="bcg20 brdr1 br5 df fdc ofh mb6" style="max-width: 30%; margin: auto">
 			<div class="bg1 mb2">
