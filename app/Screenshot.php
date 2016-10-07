@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Exceptions\MissingS3CredentialsException;
 
 class Screenshot extends Model
 {
@@ -13,8 +14,9 @@ class Screenshot extends Model
     	'url',
         'bucket',
         'file',
-	    'viewport',
+        'viewport',
 	    'crop',
+	    'thumbnail',
 	    'hide_lightboxes',
     ];
 
@@ -58,7 +60,7 @@ class Screenshot extends Model
         $bucket = $this->user->s3_bucket;
 
         if (!$key && !$secret && !$bucket) {
-            throw new \Exception('You need to add your S3 credentials');
+            throw new MissingS3CredentialsException;
         }
 
         \Config::set('filesystems.disks.s3.key', $key);
@@ -75,11 +77,7 @@ class Screenshot extends Model
 
     public function apiOutput()
     {
-    	return [
-    		'url' => $this->user->s3_directory . $this->filename,
-    		'expires_at' => $this->expires_at,
-    		'cached' => $this->cached,
-    	];
+    	return ['status' => 'success'];
     }
 
     public function recordRequest()

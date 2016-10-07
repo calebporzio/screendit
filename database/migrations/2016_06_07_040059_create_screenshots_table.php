@@ -19,6 +19,7 @@ class CreateScreenshotsTable extends Migration
             $table->string('file')->nullable();
             $table->string('viewport')->nullable();
             $table->string('crop')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->boolean('hide_lightboxes')->nullable();
             $table->integer('user_id')->nullable();
             $table->softDeletes();

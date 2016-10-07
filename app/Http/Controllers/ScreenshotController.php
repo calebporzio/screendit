@@ -18,6 +18,7 @@ class ScreenshotController extends Controller
             'file' => ['required', 'regex:/(.jpg)|(.png)$/'],
             'viewport' => ['regex:/^(([0-9]{1,3}|[0-1][0-9]{1,3})x([0-9]{1,3}|[0-1][0-9]{1,3}))$/'],
             'crop' => ['regex:/^(([0-9]{1,3}|[0-1][0-9]{1,3})x([0-9]{1,3}|[0-1][0-9]{1,3}))$/'],
+            'thumbnail' => ['regex:/^(([0-9]{1,3}|[0-1][0-9]{1,3})x([0-9]{1,3}|[0-1][0-9]{1,3}))$/'],
             'hide_lightboxes' => 'boolean',
         ]);
 
@@ -29,12 +30,20 @@ class ScreenshotController extends Controller
 
     		$screenshot = Screenshot::take($request->all());
 
-    	} catch (\Aws\S3\Exception\S3Exception $e) {
+    	} catch (\Illuminate\Contracts\Validation\ValidationException $e) {
+
+            dd($e);
+
+        } catch(\App\Exceptions\MissingS3CredentialsException $e) {
+
+            return response()->json($e->getMessage(), 400);
+
+        } catch (\Aws\S3\Exception\S3Exception $e) {
 
     		return response()->json(['error' => 'Error connecting to S3, check your credentials.'], 400);
 
     	} catch (\Exception $e) {
-            throw $e;
+
     		return response()->json(['error' => 'An Internal Error has Occurred.'], 500);
 
     	}  

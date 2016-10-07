@@ -13,7 +13,7 @@ if (system.args.length !== 8) {
     var viewportHeight = parseInt(system.args[4], 10);
     var outputWidth = parseInt(system.args[5], 10);
     var outputHeight = parseInt(system.args[6], 10);
-    var modalZap = system.args[7];
+    var modalZap = system.args[7] ? 1 : 0;
 
     // Set viewport size
     page.viewportSize = { width: viewportWidth, height: viewportHeight };
@@ -30,11 +30,11 @@ if (system.args.length !== 8) {
         } else {
             window.setTimeout(function () {
                 if (modalZap === 1) {
-                    page.injectJs('modal_zap.js');
+                    page.injectJs('hide_lightboxes.js');
                 }
                 page.render(outputFile);
                 phantom.exit();
-            }, 200);
+            }, 100);
         }
     });
 }

@@ -23,6 +23,7 @@ class ScreenshotCommandGenerator
 			->addUrl()
 			->addOutputPath()
 			->addOptions()
+			->optionallyAddThumbnail()
 			->getCommand();
 	}
 
@@ -51,9 +52,23 @@ class ScreenshotCommandGenerator
 	{
 		$this->command .= ' ' . $this->options['viewport_width'];
 		$this->command .= ' ' . $this->options['viewport_height'];
-		$this->command .= ' ' . $this->options['output_width'];
-		$this->command .= ' ' . $this->options['output_height'];
+		$this->command .= ' ' . $this->options['crop_width'];
+		$this->command .= ' ' . $this->options['crop_height'];
 		$this->command .= ' ' . $this->options['hide_lightboxes'];
+
+		return $this;
+	}
+
+	public function optionallyAddThumbnail()
+	{
+		if (! $this->options['thumbnail_width'] && ! $this->options['thumbnail_height']) {
+			return $this;
+		}
+
+		$this->command .= ' && convert ' . $this->path . ' -thumbnail';
+		$this->command .= ' ' . $this->options['thumbnail_width'];
+		$this->command .= 'x' . $this->options['thumbnail_height'];
+		$this->command .= ' ' . $this->path;
 
 		return $this;
 	}

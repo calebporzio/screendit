@@ -30,13 +30,15 @@ class GenerateScreenshotTest extends TestCase
 			'url' => 'testurl.com',
 			'file' => 'somepic.xml',
 			'viewport' => '3000x9999',
-			'crop' => '22',
+			'crop' => '54',
+			'thumbnail' => '22',
 			'hide_lightboxes' => 'something'
 		], ['Accept' => 'application/json'])->seeJson([
 			'url' => ['The url format is invalid.'],
 			'file' => ['The file format is invalid.'],
 			'viewport' => ['The viewport format is invalid.'],
 			'crop' => ['The crop format is invalid.'],
+			'thumbnail' => ['The thumbnail format is invalid.'],
 			'hide_lightboxes' => ['The hide lightboxes field must be true or false.'],
 		]);
 	}
