@@ -1,0 +1,24 @@
+.hero-bucket {
+	max-width: 900px;
+	margin: auto;
+	position: relative;
+	img {
+		width: 100%;
+	}
+	.back {
+		position: relative;
+	}
+	.front {
+		position: absolute;
+		z-index: 2;
+	}
+	.screen {
+		position: absolute;
+		z-index: 1;
+	}
+}
+
+.after-hero {
+	position: relative;
+	z-index: 2;
+}

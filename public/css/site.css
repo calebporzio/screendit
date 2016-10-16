@@ -212,6 +212,25 @@ img[height] {
   max-width: 1200px;
   margin: 0 auto; }
 
+.hero-bucket {
+  max-width: 900px;
+  margin: auto;
+  position: relative; }
+  .hero-bucket img {
+    width: 100%; }
+  .hero-bucket .back {
+    position: relative; }
+  .hero-bucket .front {
+    position: absolute;
+    z-index: 2; }
+  .hero-bucket .screen {
+    position: absolute;
+    z-index: 1; }
+
+.after-hero {
+  position: relative;
+  z-index: 2; }
+
 .tal {
   text-align: left !important; }
 

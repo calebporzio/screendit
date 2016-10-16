@@ -33811,7 +33811,7 @@ Vue.component('home', {
         };
     },
     ready: function ready() {
-        //
+        hljs.initHighlightingOnLoad();
     }
 });
 

@@ -12,6 +12,6 @@ Vue.component('home', {
     },
 
     ready() {
-        //
+        hljs.initHighlightingOnLoad();
     }
 });

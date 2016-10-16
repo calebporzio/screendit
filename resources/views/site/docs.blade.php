@@ -40,8 +40,9 @@
 		                <code class="code pv1 pl3">url: "https://target-site.com",</code>
 		                <code class="code pv1 pl3">file: "/screenshots/image.png",</code>
 		                <code class="code pv1 pl3">viewport: "1920x1080",</code>
-		                <code class="code pv1 pl3">crop: "800x600",</code>
-		                <code class="code pv1 pl3">hide_lightboxes: "true"</code>
+		                <code class="code pv1 pl3">crop: "1920x1080",</code>
+		                <code class="code pv1 pl3">thumbnail: "100x100",</code>
+		                <code class="code pv1 pl3">hide_lightboxes: 1</code>
 		                <code class="code">}</code>
 		            </div>
 		        </div>
@@ -81,6 +82,13 @@
 	    		<td class="pv2">
 	    			<p>The dimensions of the output file.</p>
 	    			<p class="ft4">Ex: 800x600</p>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td class="pr3 tc1 pv2">thumbnail</td>
+	    		<td class="pv2">
+	    			<p>Dimensions to resize the output file to. (Will maintain aspect ratio)</p>
+	    			<p class="ft4">Ex: 100x100</p>
 	    		</td>
 	    	</tr>
 	    	<tr>

@@ -10,7 +10,7 @@ trait HasOnboarding
 
 	public function isOnboarding()
 	{
-		return $this->currentStep() <= $this->totalSteps;
+		return $this->currentStep() < $this->totalSteps;
 	}
 
 	public function currentStep()
