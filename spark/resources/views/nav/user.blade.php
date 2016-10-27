@@ -7,8 +7,8 @@
     :has-unread-announcements="hasUnreadAnnouncements"
     inline-template>
 
-    <nav class="bg5">
-        <div class="container df jcsb pv2" v-if="user">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" v-if="user">
             <div class="navbar-header">
                 <!-- Collapsed Hamburger -->
                 <div class="hamburger">
@@ -84,7 +84,7 @@
                                 </a>
                             </li>
 
-                            @if (Spark::usesTeams())
+                            @if (Spark::usesTeams() && (Spark::createsAdditionalTeams() || Spark::showsTeamSwitcher()))
                                 <!-- Team Settings -->
                                 @include('spark::nav.teams')
                             @endif
