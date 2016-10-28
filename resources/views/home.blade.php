@@ -7,20 +7,22 @@
 		<div class="col-sm-8 col-sm-offset-2">
 
 			<!-- Onboarding Checklist-->
-			<div class="panel" v-for="step in steps" v-if="user.is_onboarding">
-				<div class="panel-body @{{ user.current_step == step.number - 1 ? 'text-primary' : 'text-muted' }}">
-					<h1 style="margin-top: 11px">
-						<span v-if="user.current_step >= step.number">
-							<i class="fa fa-check-square-o fa-fw" ></i>
-							<s>@{{ step.number }}. @{{ step.text }}</s>
-						</span>
-						<span v-else>
-							<i class="fa fa-square-o fa-fw"></i>
-							@{{ step.number }}. @{{ step.text }}
-						</span>
+			<div v-if="user.is_onboarding">
+				<div class="panel" v-for="step in steps">
+					<div class="panel-body @{{ user.current_step == step.number - 1 ? 'text-primary' : 'text-muted' }}">
+						<h1 style="margin-top: 11px">
+							<span v-if="user.current_step >= step.number">
+								<i class="fa fa-check-square-o fa-fw" ></i>
+								<s>@{{ step.number }}. @{{ step.text }}</s>
+							</span>
+							<span v-else>
+								<i class="fa fa-square-o fa-fw"></i>
+								@{{ step.number }}. @{{ step.text }}
+							</span>
 
-						<a :href="step.link" class="pull-right btn btn-primary btn-lg" v-if="user.current_step == (step.number - 1)">@{{ step.cta }}</a>
-					</h1>
+							<a :href="step.link" class="pull-right btn btn-primary btn-lg" v-if="user.current_step == (step.number - 1)">@{{ step.cta }}</a>
+						</h1>
+					</div>
 				</div>
 			</div>
 

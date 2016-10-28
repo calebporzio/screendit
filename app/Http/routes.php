@@ -16,3 +16,4 @@ Route::get('/docs', 'SiteController@showDocs');
 Route::get('/pricing', 'SiteController@showPricing');
 
 Route::get('/home', 'HomeController@show');
+Route::get('/s3-guide', 'HomeController@showS3Guide');

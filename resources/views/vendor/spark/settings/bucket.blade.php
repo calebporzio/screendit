@@ -14,6 +14,15 @@
 
 					<!-- Create / Update Form -->
 	                <form class="form-horizontal" role="form">
+						
+						<div class="p-t-lg">
+							<div class="alert alert-info">
+								<p>
+									<strong><a href="/s3-guide" target="_blank">Click Here</a></strong> for instructions on how to configure your AWS account for use with screendit.
+								</p>
+							</div>
+						</div>
+
 	                	<!-- Bucket -->
 	                	<div class="form-group" :class="{'has-error': form.errors.has('s3_bucket')}">
 	                	    <label class="col-md-4 control-label">S3 Bucket</label>

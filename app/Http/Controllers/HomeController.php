@@ -27,4 +27,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     * Show the guide for integrating with AWS S3
+     *
+     * @return Response
+     */
+    public function showS3Guide()
+    {
+        return view('s3_guide');
+    }
 }
