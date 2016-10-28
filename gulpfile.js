@@ -1,4 +1,7 @@
 var elixir = require('laravel-elixir');
+var path = require('path');
+
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,17 +17,14 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass('site.scss')
        .less('app.less')
-       .browserify('app.js', null, null, { paths: 'vendor/laravel/spark/resources/assets/js' })
+       .webpack('app.js', null, null, {
+                   resolve: {
+                       modules: [
+                           path.resolve(__dirname, 'vendor/laravel/spark/resources/assets/js'),
+                           'node_modules'
+                       ]
+                   }
+               })
        .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
        .copy('node_modules/sweetalert/dist/sweetalert.css', 'public/css/sweetalert.css');
-   //     .browserSync({
-   //     		proxy: 'screendit.dev',
-			// files: [
-			// 	elixir.config.appPath + '/**/*.php',
-			// 	elixir.config.get('public.js.outputFolder') + '/**/*.js',
-			// 	elixir.config.get('public.css.outputFolder') + '/**/*.css',
-			// 	elixir.config.get('public.versioning.buildFolder') + '/rev-manifest.json',
-			// 	'resources/views/**/*.php'
-			// ],
-   //     });
 });

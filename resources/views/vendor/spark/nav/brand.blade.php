@@ -1,11 +1,11 @@
 
 @if (Auth::check())
     <a class="navbar-brand" href="/home">
-    	Screend.it
+    	<img style="height: 100%;" src="img/logo.png" alt="">
     </a>
 @else
     <a class="navbar-brand" href="/">
-    	Screend.it
+    	<img style="height: 100%;" src="img/logo.png" alt="">
     </a>
 @endif
 

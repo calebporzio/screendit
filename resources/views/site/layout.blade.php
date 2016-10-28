@@ -17,7 +17,7 @@
         <div class="container df jcsb pv2">
 
             <div class="logo">
-                <a href="/"><h2 class="ft12 tcw serif">Screend.it</h2></a>
+                <a href="/"><img src="img/logo.png" alt=""></a>
             </div>
             
             <nav class="ft6 df jcsa">

@@ -25,20 +25,21 @@
 			</div>
 
 			<div class="text-center">
-				<h2 class="text-primary">Monthly Usage</h2>
+				<h2 class="">Monthly Usage</h2>
 				<!-- Progress Bar -->
 				<div class="progress" style="height: 50px; background-color: #fff">
 					<div class="progress-bar" role="progressbar" :aria-valuenow="user.requests_this_period" aria-valuemin="0" aria-valuemax="10000" :style="'width: ' + (user.requests_this_period / 10000)*100 + '%; min-width: 2.5em;'">
-						<h2 style="margin-top: 9px;">@{{ (user.requests_this_period / 10000)*100 + '%' }}</h2>
+	
 					</div>
 				</div>
+				<h2 class="text-primary" style="margin-top: 9px;">@{{ user.requests_this_period + ' / 10,000' }}</h2>
 			</div>
 
 			<hr>
 
 			<div class="panel">
 				<div class="panel-body">
-					<h3 style="margin-top: 0px; margin-bottom: 15px;">Example Request</h3>
+					<h3 style="margin-top: 0px; margin-bottom: 15px;">Sample Request</h3>
 					<hr>
 					<p>
 						<strong>Url</strong>&nbsp

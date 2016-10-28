@@ -44,7 +44,7 @@
 	                    <!-- Update Button -->
 	                    <div class="form-group">
 	                        <div class="col-md-offset-4 col-md-6">
-	                            <button type="submit" class="btn @{{ form.errors.hasErrors() ? 'btn-danger' : 'btn-primary' }}"
+	                            <button type="submit" class="btn" :class="form.errors.hasErrors() ? 'btn-danger' : 'btn-primary'"
 	                                    @click.prevent="save"
 	                                    :disabled="form.busy">
 	                                <span v-if="hasntAddedCredsYet">Save</span>

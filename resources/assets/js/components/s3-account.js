@@ -27,7 +27,7 @@ Vue.component('s3-account', {
     /**
      * Bootstrap the component.
      */
-    ready() {
+    mounted() {
         this.form.s3_bucket = this.user.s3_bucket;
         this.form.s3_key = this.user.s3_key;
         this.form.s3_secret = this.user.s3_secret;
