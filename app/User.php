@@ -78,7 +78,10 @@ class User extends SparkUser
 
     public function isOutOfRequests()
     {
-        return $this->requests_this_period >= $this->sparkPlan()->attribute('monthly_limit');
+        // Limit trial memberships to 25 requests.
+        $limit = $this->sparkPlan() ? $this->sparkPlan()->attribute('monthly_limit') : 25;
+
+        return $this->requests_this_period >= $limit;
     }
 
     public function saveS3Credentials($request)
