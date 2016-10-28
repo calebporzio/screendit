@@ -16,7 +16,7 @@
 						</span>
 						<span v-else>
 							<i class="fa fa-square-o fa-fw"></i>
-							@{{ step.text }}
+							@{{ step.number }}. @{{ step.text }}
 						</span>
 
 						<a :href="step.link" class="pull-right btn btn-primary btn-lg" v-if="user.current_step == (step.number - 1)">@{{ step.cta }}</a>
