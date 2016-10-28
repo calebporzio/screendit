@@ -12,7 +12,7 @@
 					<h1 style="margin-top: 11px">
 						<span v-if="user.current_step >= step.number">
 							<i class="fa fa-check-square-o fa-fw" ></i>
-							<s>@{{ step.text }}</s>
+							<s>@{{ step.number }}. @{{ step.text }}</s>
 						</span>
 						<span v-else>
 							<i class="fa fa-square-o fa-fw"></i>
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 
-			<div class="text-center">
+			<div class="text-center" v-else>
 				<h2 class="">Monthly Usage</h2>
 				<!-- Progress Bar -->
 				<div class="progress" style="height: 50px; background-color: #fff">
@@ -35,7 +35,7 @@
 				<h2 class="text-primary" style="margin-top: 9px;">@{{ user.requests_this_period + ' / 10,000' }}</h2>
 			</div>
 
-			<hr>
+			<hr class="m-t">
 
 			<div class="panel">
 				<div class="panel-body">
