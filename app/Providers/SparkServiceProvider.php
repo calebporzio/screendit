@@ -50,7 +50,7 @@ class SparkServiceProvider extends ServiceProvider
      */
     public function booted()
     {
-        Spark::useStripe()->trialDays(10);
+        Spark::useStripe()->noCardUpFront()->trialDays(10);
 
         Spark::plan('Standard', 'standard-monthly')
             ->price(29.99)
