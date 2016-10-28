@@ -84,10 +84,9 @@
             </span>
         </div>
     </div>
-    
-    <!-- Disabled until we get Terms and Conditions -->
+
     <!-- Terms And Conditions -->
-    <!-- <div v-if=" ! selectedPlan || selectedPlan.price == 0">
+    <div v-if=" ! selectedPlan || selectedPlan.price == 0">
         <div class="form-group" :class="{'has-error': registerForm.errors.has('terms')}">
             <div class="col-md-6 col-md-offset-4">
                 <div class="checkbox">
@@ -101,7 +100,7 @@
                     </span>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
