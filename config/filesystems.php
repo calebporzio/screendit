@@ -56,19 +56,11 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'AKIAINRQ3LVGIGDVACZA',
-            'secret' => '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',
+            'key' => '',
+            'secret' => '',
             'region' => 'us-east-1',
             'bucket' => 'screendit',
         ],
-
-        // 's3' => [
-        //     'driver' => 's3',
-        //     'key' => 'AKIAIZEPOCEVFDPFVPZA',
-        //     'secret' => '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',
-        //     'region' => 'us-east-1',
-        //     'bucket' => 'screendit',
-        // ],
 
     ],
 
