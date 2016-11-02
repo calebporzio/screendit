@@ -25,7 +25,7 @@ Vue.component('home', {
         },
 
         periodStart() {
-            return moment(this.user.period_start_date).format('MMM Do');
+            return moment(this.user.period_start_date).add(1, 'month').format('MMM Do');
         }
     }
 });
