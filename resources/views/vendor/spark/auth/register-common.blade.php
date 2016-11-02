@@ -144,6 +144,10 @@
 
 <!-- Basic Profile -->
 <div class="row">
+    <div class="container text-center m-b-lg">
+        <h2>No card upfront, what do you have to lose?</h2>
+    </div>
+
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">

@@ -10,6 +10,16 @@ trait HasOnboarding
 
 	public function isOnboarding()
 	{
+		return $this->hasntFinishedOnboarding() && $this->areLessThanAMonthOld();
+	}
+
+	public function areLessThanAMonthOld()
+	{
+		return $this->created_at > (new Carbon('1 Month Ago'));
+	}
+
+	public function hasntFinishedOnboarding()
+	{
 		return $this->currentStep() < $this->totalSteps;
 	}
 

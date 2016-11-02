@@ -13,5 +13,19 @@ Vue.component('home', {
 
     mounted() {
         hljs.initHighlightingOnLoad();
+    },
+
+    computed: {
+        isTrial() {
+            return (new Date(this.user.trial_ends_at)) > (new Date())
+        },
+
+        isOutOfTrialRequests() {
+            return this.user.requests_this_period >= 25;
+        },
+
+        periodStart() {
+            return moment(this.user.period_start_date).format('MMM Do');
+        }
     }
 });

@@ -5,9 +5,8 @@
     <div class="container tac">
 
         <div class="pv8">
-            <h1 class="ft12 mb1 tc3">Screenshots hand delivered to your S3 bucket</h1>
-            <!-- <h2 class="ft10 mb5 tc1">Just say the word (...or hit our API)</h2> -->
-            <!-- <a href="/register" class="ft9 tcw pv1 ph2 br4 bg1">Get Started</a> -->
+            <h1 class="ft12 mb2 tc3">Screenshots hand delivered to your S3 bucket</h1>
+            <a href="/register" class="ft9 tcw pv1 ph2 br4 bg1 mt2">Get Started</a>
         </div>
         
         <div class="hero-bucket">

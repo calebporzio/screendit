@@ -69,9 +69,15 @@ class User extends SparkUser
         $this->save();
     }
 
+    public function periodIsOver()
+    {
+        return $this->period_start_date < (new \Carbon\Carbon('1 Month Ago'));
+    }
+
     public function setPeriodStart()
     {
         $this->period_start_date = \Carbon\Carbon::now();
+        $this->requests_this_period = 0;
 
         $this->save();
     }

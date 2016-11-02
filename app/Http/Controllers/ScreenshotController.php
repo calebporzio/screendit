@@ -11,6 +11,11 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class ScreenshotController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('subscribed');    
+    }
+
     public function generate(Request $request)
     {
         $this->validate($request, [

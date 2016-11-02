@@ -24,6 +24,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
+        $schedule->call(function() {
+            App\User::all()->each(function($user) {
+                if ($user->periodIsOver()) {
+                    $user->setPeriodStart();
+                }
+            });
+        })->daily();
     }
 }

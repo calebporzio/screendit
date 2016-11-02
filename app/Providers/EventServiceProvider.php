@@ -21,6 +21,7 @@ class EventServiceProvider extends ServiceProvider
         'Laravel\Spark\Events\Subscription\UserSubscribed' => [
             'Laravel\Spark\Listeners\Subscription\UpdateActiveSubscription',
             'Laravel\Spark\Listeners\Subscription\UpdateTrialEndingDate',
+            'App\Listeners\SetPeriodStart',
         ],
 
         'Laravel\Spark\Events\Profile\ContactInformationUpdated' => [
@@ -63,11 +64,6 @@ class EventServiceProvider extends ServiceProvider
 
         'Laravel\Spark\Events\Teams\UserInvitedToTeam' => [
             'Laravel\Spark\Listeners\Teams\CreateInvitationNotification',
-        ],
-
-        // Screend.it Listeners
-        'Laravel\Spark\Events\Subscription\UserSubscribed' => [
-            'App\Listeners\SetPeriodStart',
         ],
     ];
 

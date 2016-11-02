@@ -26,8 +26,6 @@ class SetPeriodStart
      */
     public function handle(UserSubscribed $event)
     {
-        if ($event->fromRegistration) {
-            $event->user->setPeriodStart();
-        }
+        $event->user->setPeriodStart();
     }
 }
