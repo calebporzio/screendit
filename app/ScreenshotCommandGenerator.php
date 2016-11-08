@@ -65,10 +65,9 @@ class ScreenshotCommandGenerator
 			return $this;
 		}
 
-		$this->command .= ' && convert ' . $this->path . ' -thumbnail';
-		$this->command .= ' ' . $this->options['thumbnail_width'];
-		$this->command .= 'x' . $this->options['thumbnail_height'];
-		$this->command .= ' ' . $this->path;
+		$thumbSize = $this->options['thumbnail_width'] . 'x' . $this->options['thumbnail_height'];
+
+		$this->command .= "&& convert $this->path -thumbnail $thumbSize^ -gravity center -extent $thumbSize $this->path";
 
 		return $this;
 	}
