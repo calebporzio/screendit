@@ -10,6 +10,10 @@ class CommandLine
 	public static function execute($command)
 	{
 		$process = new Process($command);
+
+		// Set the timeout below.
+		// $process->setTimeout(60);
+		
 		$process->run();
 
 		if (!$process->isSuccessful()) {

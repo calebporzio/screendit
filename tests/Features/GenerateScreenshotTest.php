@@ -64,6 +64,9 @@ class GenerateScreenshotTest extends TestCase
 		$this->post('/api/screenshot', [
 			'url' => 'http://google.com',
 			'file' => 'here/test_screenshot.png',
+			'viewport' => '1920x1080',
+			'crop' => '1920x1080',
+			'thumbnail' => '600x450',
 		], ['Accept' => 'application/json'])->seeStatusCode(200);
 
 		// Make sure the screenshot got generated on S3.

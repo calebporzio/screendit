@@ -39,8 +39,8 @@
 		                <code class="code">{</code>
 		                <code class="code pv1 pl3">url: "https://target-site.com",</code>
 		                <code class="code pv1 pl3">file: "/screenshots/image.png",</code>
-		                <code class="code pv1 pl3">viewport: "1920x1080",</code>
-		                <code class="code pv1 pl3">crop: "1920x1080",</code>
+		                <code class="code pv1 pl3">viewport: "1366x768",</code>
+		                <code class="code pv1 pl3">crop: "1366x768",</code>
 		                <code class="code pv1 pl3">thumbnail: "100x100",</code>
 		                <code class="code pv1 pl3">hide_lightboxes: 1</code>
 		                <code class="code">}</code>
@@ -74,7 +74,7 @@
 	    		<td class="pr3 tc1 pv2">viewport</td>
 	    		<td class="pv2">
 	    			<p>The dimensions of the browser screen to render the screenshot.</p>
-	    			<p class="ft4">Ex: 1920x1080</p>
+	    			<p class="ft4">Ex: 1366x768</p>
 	    		</td>
 	    	</tr>
 	    	<tr>

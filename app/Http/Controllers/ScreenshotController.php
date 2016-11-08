@@ -48,7 +48,7 @@ class ScreenshotController extends Controller
     		return response()->json(['error' => 'Error connecting to S3, check your credentials.'], 400);
 
     	} catch (\Exception $e) {
-
+            \Log::log('error', $e);
     		return response()->json(['error' => 'An Internal Error has Occurred.'], 500);
 
     	}  

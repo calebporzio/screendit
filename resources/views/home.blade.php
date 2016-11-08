@@ -100,8 +100,8 @@
 {
 	url: "https://target-site.com",
 	file: "/screenshots/image.png",
-	viewport: "1920x1080",
-	crop: "1920x1080",
+	viewport: "1366x768",
+	crop: "1366x768",
 	thumbnail: "100x100",
 	hide_lightboxes: 1
 }

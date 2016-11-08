@@ -7,7 +7,7 @@ class ScreenshotOptions
 	public $defaults = [
 		'url' => '',
 		'file' => '',
-		'viewport' => '1480x1037',
+		'viewport' => '1366x768',
 		'crop' => '0',
 		'thumbnail' => '0',
 		'hide_lightboxes' => false,
