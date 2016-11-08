@@ -67,7 +67,7 @@ class ScreenshotCommandGenerator
 
 		$thumbSize = $this->options['thumbnail_width'] . 'x' . $this->options['thumbnail_height'];
 
-		$this->command .= "&& convert $this->path -thumbnail $thumbSize^ -gravity center -extent $thumbSize $this->path";
+		$this->command .= "&& convert $this->path -thumbnail $thumbSize^ -gravity north -extent $thumbSize $this->path";
 
 		return $this;
 	}
