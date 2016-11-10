@@ -38,7 +38,7 @@
         <div class="df fds pb6">
             <div class="words pr6">
                 <h3 class="ft12 tc1 tal pb2">Convenient Resizing</h3>
-                <p class="ft6 tcg50 tal lh1-6">We'll take care of the heavy lifting when it comes to resizing. Simply specify your desired dimensions in the api call and we will resize (while respecting aspect ratios) your screenshot for you. This is particulary useful if your generating thumbnails.</p>
+                <p class="ft6 tcg50 tal lh1-6">We'll take care of the heavy lifting when it comes to resizing. Simply specify your desired dimensions in the api call and we will resize (while respecting aspect ratios) your screenshot for you. This is particularly useful if you're generating thumbnails.</p>
             </div>
             <div class="image">
                 <img src="/img/file_sizes.png" alt="">
