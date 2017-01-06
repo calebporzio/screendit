@@ -40,13 +40,13 @@
                 <h3 class="ft12 tc1 tal pb2">Convenient Resizing</h3>
                 <p class="ft6 tcg50 tal lh1-6">We'll take care of the heavy lifting when it comes to resizing. Simply specify your desired dimensions in the api call and we will resize (while respecting aspect ratios) your screenshot for you. This is particularly useful if you're generating thumbnails.</p>
             </div>
-            <div class="image">
+            <div class="image dn md-db">
                 <img src="/img/file_sizes.png" alt="">
             </div>
         </div>
 
         <div class="df fds">
-            <div class="image">
+            <div class="image dn md-db">
                 <img src="/img/light_box.png" alt="">
             </div>
             <div class="words pl6 tar">
@@ -61,7 +61,9 @@
 <div class="section-4 pv8 bgg05">
     <div class="container">
         <h3 class="ft9 tac tc5">
-            What are you waiting for? Check out our 10 day free trial.
+            What are you waiting for? Check out our 10 day free trial.	
+        </h3>
+        <h3 class="ft9 tac tc5 mv3">
             <a href="/register" class="ft9 tcw pv1 ph2 br4 bg1 ml3">Let's Do This Thing</a>
         </h3>
     </div>
