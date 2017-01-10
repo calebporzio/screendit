@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app.layout')
 
 @section('content')
 <home :user="user" inline-template>

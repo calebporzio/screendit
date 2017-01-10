@@ -23,7 +23,7 @@ class DashboardController extends Controller
      */
     public function showDashboard()
     {
-        return view('dashboard');
+        return view('app.dashboard');
     }
 
     /**
@@ -33,6 +33,6 @@ class DashboardController extends Controller
      */
     public function showS3Guide()
     {
-        return view('s3_guide');
+        return view('app.s3_guide');
     }
 }

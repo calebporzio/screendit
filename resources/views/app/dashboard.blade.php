@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app.layout')
 
 @section('content')
 <dashboard :user="user" inline-template>
