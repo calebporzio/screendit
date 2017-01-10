@@ -35,11 +35,7 @@ class ScreenshotController extends Controller
 
     		$screenshot = Screenshot::take($request->all());
 
-    	} catch (\Illuminate\Contracts\Validation\ValidationException $e) {
-
-            dd($e);
-
-        } catch(\App\Exceptions\MissingS3CredentialsException $e) {
+    	} catch(\App\Exceptions\MissingS3CredentialsException $e) {
 
             return response()->json($e->getMessage(), 400);
 
