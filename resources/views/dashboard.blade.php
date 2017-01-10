@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<home :user="user" inline-template>
+<dashboard :user="user" inline-template>
 	
 	<div>
 		<div class="col-sm-8 col-sm-offset-2">
@@ -113,5 +113,5 @@
 		</div>
 	</div>
 
-</home>
+</dashboard>
 @endsection

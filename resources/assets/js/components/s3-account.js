@@ -1,9 +1,6 @@
 Vue.component('s3-account', {
     props: ['user'],
 
-    /**
-     * The component's data.
-     */
     data() {
         return {
         	showForm: false,
@@ -23,10 +20,6 @@ Vue.component('s3-account', {
     	}
     },
 
-
-    /**
-     * Bootstrap the component.
-     */
     mounted() {
         this.form.s3_bucket = this.user.s3_bucket;
         this.form.s3_key = this.user.s3_key;
@@ -44,9 +37,6 @@ Vue.component('s3-account', {
     		this.toggleForm();
     	},
 
-        /**
-         * Add the user's s3 bucket information.
-         */
         save() {
             Spark.post('/api/s3-account', this.form)
                 .then(response => {

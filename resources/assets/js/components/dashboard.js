@@ -1,4 +1,4 @@
-Vue.component('home', {
+Vue.component('dashboard', {
     props: ['user'],
 
     data() {

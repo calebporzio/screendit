@@ -11,9 +11,9 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function showHome()
+    public function showMarketingPage()
     {
-        return view('site.home');
+        return view('site.marketing');
     }
 
     /**

@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'SiteController@showHome');
+Route::get('/', 'SiteController@showMarketingPage');
 Route::get('/docs', 'SiteController@showDocs');
 Route::get('/pricing', 'SiteController@showPricing');
 
-Route::get('/home', 'HomeController@show');
-Route::get('/s3-guide', 'HomeController@showS3Guide');
+Route::get('/home', 'DashboardController@showDashboard');
+Route::get('/s3-guide', 'DashboardController@showS3Guide');
