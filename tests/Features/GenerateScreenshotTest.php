@@ -9,7 +9,6 @@ class GenerateScreenshotTest extends TestCase
 	public function testMissingParameters()
 	{
 		$this->generateUser();
-		
 		$this->post('/api/screenshot', [
 			// Purposely missing required params
 		], ['Accept' => 'application/json'])->seeJson([
