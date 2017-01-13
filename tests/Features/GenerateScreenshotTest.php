@@ -6,15 +6,10 @@ class GenerateScreenshotTest extends TestCase
 {
 	use DatabaseMigrations;
 
-	public function setUp()
-	{
-		parent::setUp();
-
-		$this->setUpUser();
-	}
-
 	public function testMissingParameters()
 	{
+		$this->generateUser();
+		
 		$this->post('/api/screenshot', [
 			// Purposely missing required params
 		], ['Accept' => 'application/json'])->seeJson([
@@ -25,6 +20,8 @@ class GenerateScreenshotTest extends TestCase
 
 	public function testInvalidInput()
 	{
+		$this->generateUser();
+
 		$this->post('/api/screenshot', [
 			// Invalid Url
 			'url' => 'testurl.com',
@@ -45,7 +42,7 @@ class GenerateScreenshotTest extends TestCase
 
 	public function testUserIsOutOfRequestsForTheMonth()
 	{
-		$user = Auth::user();
+		$user = $this->generateUser();
 		$user->requests_this_period = 15000;
 		$user->save();
 
@@ -59,7 +56,7 @@ class GenerateScreenshotTest extends TestCase
 
 	public function testScreenshotGetsGenerated()
 	{
-		$user = $this->getUserWithS3Creds();
+		$user = $this->generateUser();
 
 		$this->post('/api/screenshot', [
 			'url' => 'http://google.com',
@@ -77,33 +74,5 @@ class GenerateScreenshotTest extends TestCase
 
 		// Clean up after test on S3.
 		\Storage::disk('s3')->delete('here/test_screenshot.png');
-	}
-
-	public function getUserWithS3Creds()
-	{
-		$user = Auth::user();
-
-		$user->s3_key = env('S3_KEY');
-		$user->s3_secret = env('S3_SECRET');
-		$user->s3_bucket = env('S3_BUCKET');
-		$user->save();
-
-		return $user;
-	}
-
-	protected function setUpUser()
-	{
-		$user = factory(\App\User::class)->create();
-
-		$user->subscriptions()->create([
-			'name' => 'default',
-			'stripe_id' => 'test_stripe_id',
-			'stripe_plan' => 'standard-monthly',
-			'quantity' => 1,
-		]);
-
-		Auth::login($user);
-
-		return $user;
 	}
 }

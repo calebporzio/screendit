@@ -4,11 +4,12 @@ namespace App;
 
 use Carbon\Carbon;
 use App\HasOnboarding;
+use App\CanBeOnTrial;
 use Laravel\Spark\User as SparkUser;
 
 class User extends SparkUser
 {
-    use HasOnboarding;
+    use HasOnboarding, CanBeOnTrial;
     
     /**
      * The attributes that are mass assignable.
@@ -103,8 +104,6 @@ class User extends SparkUser
     {
         return array_merge(parent::toArray(), [
             's3_secret' => str_repeat("*", strlen($this->s3_secret)),
-            'is_onboarding' => $this->isOnboarding(),
-            'current_step' => $this->currentStep(),
         ]);
     }
 }

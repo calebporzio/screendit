@@ -17,6 +17,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->safeEmail,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+        'last_read_announcements_at' => Carbon\Carbon::now(),
+    ];
+});
+
+$factory->state(App\User::class, 'on-trial', function (Faker\Generator $faker) {
+	return [
+        'trial_ends_at' => Carbon\Carbon::now()->addDays(Laravel\Spark\Spark::trialDays()),
     ];
 });
 

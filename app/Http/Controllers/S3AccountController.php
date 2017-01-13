@@ -19,7 +19,7 @@ class S3AccountController extends Controller
     	Auth::user()->saveS3Credentials($request);
 
     	return response()->json([
-    		'redirect_url' => Auth::user()->isOnboarding() ? '/home' : '/settings#/bucket',
+    		'redirect_url' => Auth::user()->onboarding()->inProgress() ? '/home' : '/settings#/bucket',
     	], 200);
     }
 }
