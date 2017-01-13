@@ -3,13 +3,12 @@
 namespace App;
 
 use Carbon\Carbon;
-use App\HasOnboarding;
-use App\CanBeOnTrial;
+use Calebporzio\Onboard\GetsOnboarded;
 use Laravel\Spark\User as SparkUser;
 
 class User extends SparkUser
 {
-    use HasOnboarding, CanBeOnTrial;
+    use GetsOnboarded;
     
     /**
      * The attributes that are mass assignable.
@@ -98,6 +97,23 @@ class User extends SparkUser
         $this->s3_secret = $request->s3_secret;
 
         $this->save();
+    }
+
+    public function hasAddedS3Creds()
+    {
+    	return $this->s3_bucket && $this->s3_key && $this->s3_secret;
+    }
+
+    public function hasGeneratedApiToken()
+    {
+        return $this->tokens()->count() > 0;
+    }
+
+    public function hasGeneratedAScreenshot()
+    {
+        $monthsSinceSignUp = Carbon::now()->diff(new Carbon($this->created_at))->m;
+        
+        return $this->requests_this_period > 0 && $monthsSinceSignUp < 1;
     }
 
     public function toArray()

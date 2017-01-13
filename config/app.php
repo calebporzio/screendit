@@ -160,6 +160,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Illuminate\Notifications\NotificationServiceProvider::class,
+        Calebporzio\Onboard\OnboardServiceProvider::class,
     ],
 
     /*
