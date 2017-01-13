@@ -208,6 +208,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
+        'Onboard' => Calebporzio\Onboard\OnboardFacade::class,
     ],
 
 ];
