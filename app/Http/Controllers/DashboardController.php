@@ -6,21 +6,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('subscribed');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return Response
-     */
     public function showDashboard()
     {
         return view('app.dashboard');
@@ -28,8 +18,6 @@ class DashboardController extends Controller
 
     /**
      * Show the guide for integrating with AWS S3
-     *
-     * @return Response
      */
     public function showS3Guide()
     {

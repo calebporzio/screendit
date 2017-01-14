@@ -11,5 +11,4 @@
 
 require('./../spark-components/bootstrap');
 
-require('./dashboard');
 require('./s3-account');
